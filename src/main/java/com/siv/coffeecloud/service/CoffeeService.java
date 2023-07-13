@@ -9,16 +9,17 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public record CoffeeService(CoffeeRepository coffeeRepository) {
+public class CoffeeService {
 
-    @Autowired
-    public CoffeeService {
+    private final CoffeeRepository coffeeRepository;
+
+    public CoffeeService(CoffeeRepository coffeeRepository) {
+        this.coffeeRepository = coffeeRepository;
     }
 
     public List<Coffee> findAll() {
         return coffeeRepository.findAll();
     }
-
     public Coffee findById(Long id) {
         Optional<Coffee> optionalCoffee = coffeeRepository.findById(id);
         return optionalCoffee.orElse(null);
