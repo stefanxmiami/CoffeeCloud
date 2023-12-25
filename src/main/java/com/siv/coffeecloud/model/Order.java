@@ -27,5 +27,35 @@ public class Order {
     @Column(nullable = false)
     private Date orderDate;
 
-    // getters and setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(final Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(final User user) {
+        this.user = user;
+    }
+
+    public Set<Coffee> getCoffees() {
+        return coffees;
+    }
+
+    public void setCoffees(final Set<Coffee> coffees) {
+        this.coffees = coffees;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(final Date orderDate) {
+        this.orderDate = orderDate;
+    }
 }

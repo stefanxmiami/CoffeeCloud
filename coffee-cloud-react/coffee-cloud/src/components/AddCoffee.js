@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
+import CoffeeService from '../services/CoffeeService'; // Importing the default export
 
-const AddCoffee = ({ addCoffee }) => {
+const AddCoffee = () => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        addCoffee({ name, price });
-
-        setName('');
-        setPrice('');
+        // Using createCoffee from CoffeeService
+        CoffeeService.createCoffee({ name, price })
+            .then(response => {
+                // Handle the response
+                console.log('Coffee added successfully', response.data);
+                setName('');
+                setPrice('');
+            })
+            .catch(error => {
+                // Handle any errors
+                console.error('Error adding coffee:', error);
+            });
     };
 
     return (
